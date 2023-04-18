@@ -12,8 +12,8 @@ const hbsOptions={
 }
 
 const nodemailer=require("nodemailer")
-const user="authwebdeveloper21@gmail.com"
-const pass="kqrahoyqlwzxtvtf"
+const user=process.env.EMAIL_USERNAME
+const pass=process.env.EMAIL_PASSWORD
 
 const transporter=nodemailer.createTransport(
     {
