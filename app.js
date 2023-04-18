@@ -1,11 +1,13 @@
 const expres = require("express")
-const SendOTP = require("./SendOTP")
 const app = expres()
 const dotenv = require("dotenv")
 dotenv.config();
 
+const SendOTP = require("./SendOTP")
+
 app.get("/sendOTP", async (req, res) => {
     const { email, otp } = req.query;
+
     try {
         const isVerified = await verifyAttributes({ email,otp })
     } catch (err) {
@@ -14,7 +16,6 @@ app.get("/sendOTP", async (req, res) => {
     //sendOTP
     try {
         const msg = await SendOTP(email, otp)
-        console.log("request came")
         res.status(200).send("OTP sent successfully")
     } catch (err) {
         return res.status(500).send("Failed to sent OTP " + err)
