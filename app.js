@@ -13,9 +13,8 @@ app.get("/sendOTP", async (req, res) => {
     }
     //sendOTP
     try {
-        // const msg = await SendOTP(email, otp)
+        const msg = await SendOTP(email, otp)
         console.log("request came")
-        throw new Error("No Signal")
         res.status(200).send("OTP sent successfully")
     } catch (err) {
         return res.status(500).send("Failed to sent OTP " + err)
