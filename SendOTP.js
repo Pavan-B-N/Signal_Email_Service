@@ -2,7 +2,8 @@ const transporter = require("./Transporter")
 
 async function SendOTP(to, otp) {
     const mailOptions = {
-        from: "Signal ",
+        from: `Signal ${process.env.EMAIL_USERNAME}`,
+        subject:"OTP Verification",
         to: to,
         template:"OTP",//handlebar name
         context: {

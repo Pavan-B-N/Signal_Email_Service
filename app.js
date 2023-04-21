@@ -7,7 +7,6 @@ const SendOTP = require("./SendOTP")
 
 app.get("/sendOTP", async (req, res) => {
     const { email, otp } = req.query;
-
     try {
         const isVerified = await verifyAttributes({ email,otp })
     } catch (err) {
@@ -18,6 +17,7 @@ app.get("/sendOTP", async (req, res) => {
         const msg = await SendOTP(email, otp)
         res.status(200).send("OTP sent successfully")
     } catch (err) {
+        console.log(err)
         return res.status(500).send("Failed to sent OTP " + err)
     }
 })
